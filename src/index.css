@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #F7F4EF;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1A1A1A;
+    background-color: #F7F4EF;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: 'Frank Ruhl Libre', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Frank Ruhl Libre', serif;
+  }
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
+/* Stripe card element */
+.StripeElement {
+  padding: 12px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  transition: border-color 0.2s;
+}
+.StripeElement--focus {
+  border-color: #2D5A27;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+}
+.StripeElement--invalid {
+  border-color: #ef4444;
+}
