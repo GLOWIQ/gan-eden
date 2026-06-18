@@ -2,11 +2,10 @@ import { useState } from 'react'
 
 const DEMO_PASSWORD = 'ganeden2025'
 const SESSION_KEY = '_gd_auth'
+const BG = 'radial-gradient(ellipse at 50% 30%,#1a3a1a 0%,#152A15 30%,#081008 90%)'
 
 export default function PasswordGate({ children }) {
-  const [unlocked, setUnlocked] = useState(
-    () => sessionStorage.getItem(SESSION_KEY) === '1'
-  )
+  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem(SESSION_KEY) === '1')
   const [input, setInput] = useState('')
   const [shake, setShake] = useState(false)
   const [error, setError] = useState(false)
@@ -21,33 +20,28 @@ export default function PasswordGate({ children }) {
       setShake(true)
       setInput('')
       setTimeout(() => setShake(false), 600)
-      setTimeout(() => setError(false), 2500)
+      setTimeout(() => setError(false), 2800)
     }
   }
 
   if (unlocked) return children
 
   return (
-    <div
-      dir="rtl"
-      className="min-h-screen bg-bg flex items-center justify-center px-4"
-    >
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: BG }}>
+      <div className="w-full max-w-xs">
         {/* Logo */}
-        <div className="flex flex-col items-center mb-10">
-          <span className="text-5xl mb-3">🌿</span>
-          <h1 className="font-display font-bold text-3xl text-primary">גן עדן</h1>
-          <p className="font-body text-sm text-light mt-1" dir="ltr">Gan Eden — Demo Preview</p>
+        <div className="text-center mb-10">
+          <LeafMark />
+          <h1 className="font-frank font-bold text-text-dark mt-4" style={{ fontSize: 42 }}>גן עדן</h1>
+          <p className="font-fraunces italic text-text-dark/40 text-sm mt-1" dir="ltr">Gan Eden — Demo Preview</p>
         </div>
 
-        <div
-          className={`bg-white rounded-2xl shadow-md p-8 ${shake ? 'animate-[shake_0.5s_ease]' : ''}`}
-          style={shake ? { animation: 'shake 0.5s ease' } : {}}
-        >
-          <p className="font-body text-sm text-ink/70 mb-5 text-center">
+        <div className={`bg-forest/80 backdrop-blur-md border border-sage/15 rounded-2xl p-8
+          ${shake ? 'animate-shake' : ''}`}>
+          <p className="font-heebo text-text-dark/60 text-sm text-center mb-6">
             דמו זה מוגן בסיסמה
             <br />
-            <span dir="ltr" className="text-light text-xs">This preview is password protected</span>
+            <span dir="ltr" className="text-text-dark/35 text-xs">This preview is password protected</span>
           </p>
 
           <form onSubmit={attempt} className="space-y-4">
@@ -57,42 +51,36 @@ export default function PasswordGate({ children }) {
               onChange={(e) => setInput(e.target.value)}
               placeholder="סיסמה · Password"
               autoFocus
-              className={`w-full px-4 py-3 rounded-xl border font-body text-sm text-center tracking-widest outline-none transition ${
-                error
-                  ? 'border-red-400 bg-red-50 text-red-600 placeholder:text-red-300'
-                  : 'border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10'
-              }`}
+              className={`w-full px-4 py-3.5 rounded-xl border bg-canvas/60 font-dmsans text-sm
+                text-center tracking-widest outline-none transition-all duration-200 text-text-dark
+                placeholder:text-text-dark/25
+                ${error
+                  ? 'border-terracotta ring-2 ring-terracotta/20 text-terracotta'
+                  : 'border-sage/30 focus:border-moss focus:ring-2 focus:ring-moss/20'}`}
             />
             {error && (
-              <p className="font-body text-xs text-red-500 text-center">
+              <p className="font-heebo text-terracotta text-xs text-center animate-fadeIn">
                 סיסמה שגויה · Incorrect password
               </p>
             )}
-            <button
-              type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-white font-body font-semibold py-3 rounded-xl transition-all active:scale-[0.97]"
-            >
+            <button type="submit"
+              className="w-full bg-moss hover:bg-moss/85 text-white font-heebo font-medium py-3.5
+                rounded-full transition-colors duration-250 text-sm">
               כניסה · Enter
             </button>
           </form>
         </div>
 
-        <p className="font-body text-xs text-light text-center mt-6">
+        <p className="font-dmsans text-text-dark/20 text-xs text-center mt-8">
           © 2025 גן עדן | Gan Eden
         </p>
       </div>
-
-      <style>{`
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          15%       { transform: translateX(-8px); }
-          30%       { transform: translateX(8px); }
-          45%       { transform: translateX(-6px); }
-          60%       { transform: translateX(6px); }
-          75%       { transform: translateX(-3px); }
-          90%       { transform: translateX(3px); }
-        }
-      `}</style>
     </div>
   )
 }
+
+const LeafMark = () => (
+  <svg viewBox="0 0 48 48" className="w-12 h-12 mx-auto text-sage" fill="currentColor">
+    <path d="M24 4C13 4 5 14 5 24c0 4 1 8 3 11 2-6 5-12 10-16-4 4-6 10-7 16 2 2 5 4 8 5-1-5-1-11 3-16-2 5-2 11 0 16h2c0-6 1-12 5-16-3 4-4 10-3 16 3-1 6-3 8-5-1-6-3-12-7-16 5 4 8 10 10 16 2-3 3-7 3-11 0-10-8-20-19-20z"/>
+  </svg>
+)

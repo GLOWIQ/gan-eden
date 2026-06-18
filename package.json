@@ -9,8 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/frank-ruhl-libre": "^5.2.8",
+    "@fontsource/fraunces": "^5.2.9",
+    "@fontsource/heebo": "^5.2.8",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.4.0",
+    "framer-motion": "^12.40.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

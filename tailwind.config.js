@@ -4,51 +4,51 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#F7F4EF',
-        primary: '#2D5A27',
-        accent: '#C0622F',
-        muted: '#8B9E7A',
-        ink: '#1A1A1A',
-        light: '#6B7280',
+        canvas:       '#081008',
+        forest:       '#152A15',
+        moss:         '#2D5A2D',
+        sage:         '#7A9E7A',
+        cream:        '#F2EDE4',
+        'warm-white': '#FAF8F4',
+        terracotta:   '#B85C35',
+        gold:         '#C9A84C',
+        'text-dark':  '#E8E2D6',
+        'text-light': '#1A1A14',
       },
       fontFamily: {
-        display: ['"Frank Ruhl Libre"', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        fraunces: ['Fraunces', 'serif'],
+        frank:    ['"Frank Ruhl Libre"', 'serif'],
+        heebo:    ['Heebo', 'sans-serif'],
+        dmsans:   ['"DM Sans"', 'sans-serif'],
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-        fadeSlideUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideInRight: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        toastIn: {
-          '0%': { opacity: '0', transform: 'translateY(-10px)' },
-          '15%': { opacity: '1', transform: 'translateY(0)' },
-          '80%': { opacity: '1' },
-          '100%': { opacity: '0' },
-        },
-        checkmark: {
-          '0%': { 'stroke-dashoffset': '100' },
+        checkDraw: {
+          '0%':   { 'stroke-dashoffset': '120' },
           '100%': { 'stroke-dashoffset': '0' },
+        },
+        scrollBounce: {
+          '0%, 100%': { transform: 'translateY(0)', opacity: '0.6' },
+          '50%':       { transform: 'translateY(8px)', opacity: '0.2' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '15%':  { transform: 'translateX(-8px)' },
+          '30%':  { transform: 'translateX(8px)' },
+          '45%':  { transform: 'translateX(-6px)' },
+          '60%':  { transform: 'translateX(6px)' },
+          '75%':  { transform: 'translateX(-3px)' },
+          '90%':  { transform: 'translateX(3px)' },
+        },
+        leafSpin: {
+          '0%':   { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
-        fadeSlideUp: 'fadeSlideUp 0.8s ease forwards',
-        fadeIn: 'fadeIn 0.6s ease forwards',
-        slideInRight: 'slideInRight 0.3s ease forwards',
-        toast: 'toastIn 2.5s ease forwards',
+        checkDraw:    'checkDraw 1.2s ease forwards',
+        scrollBounce: 'scrollBounce 2s ease-in-out infinite',
+        shake:        'shake 0.5s ease',
+        leafSpin:     'leafSpin 1.2s linear infinite',
       },
     },
   },

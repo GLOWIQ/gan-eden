@@ -1,52 +1,61 @@
+@import '@fontsource/fraunces/300.css';
+@import '@fontsource/fraunces/300-italic.css';
+@import '@fontsource/fraunces/400.css';
+@import '@fontsource/fraunces/400-italic.css';
+@import '@fontsource/frank-ruhl-libre/700.css';
+@import '@fontsource/heebo/400.css';
+@import '@fontsource/heebo/500.css';
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/500.css';
+@import '@fontsource/dm-sans/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    background-color: #F7F4EF;
-  }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', sans-serif;
-    color: #1A1A1A;
-    background-color: #F7F4EF;
-    line-height: 1.7;
+    @apply bg-canvas text-text-dark font-heebo;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  h1, h2, h3 {
-    font-family: 'Frank Ruhl Libre', serif;
+  *:focus-visible {
+    outline: 2px solid #2D5A2D;
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: 'Frank Ruhl Libre', serif;
+  .snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
-  .font-body {
-    font-family: 'Inter', sans-serif;
-  }
+  .snap-align-start { scroll-snap-align: start; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none !important;
-  }
-}
-
-/* Stripe card element */
+/* Stripe element theming */
 .StripeElement {
-  padding: 12px 16px;
-  border: 1.5px solid #e5e7eb;
+  padding: 14px 16px;
+  border: 1.5px solid #7A9E7A;
   border-radius: 12px;
-  background: white;
-  transition: border-color 0.2s;
+  background: #FAF8F4;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .StripeElement--focus {
-  border-color: #2D5A27;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+  border-color: #2D5A2D;
+  box-shadow: 0 0 0 3px rgba(45,90,45,0.15);
 }
-.StripeElement--invalid {
-  border-color: #ef4444;
+.StripeElement--invalid { border-color: #B85C35; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #081008; }
+::-webkit-scrollbar-thumb { background: #2D5A2D; border-radius: 3px; }
